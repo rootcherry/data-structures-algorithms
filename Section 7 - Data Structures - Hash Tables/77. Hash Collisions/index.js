@@ -12,3 +12,6 @@ user.spell = 'abra kadabra'; // O(1)
 user.scream(); // O(1)
 
 // O(n)
+
+//Map --> Gives you some order
+//Set --> No duplicate keys
