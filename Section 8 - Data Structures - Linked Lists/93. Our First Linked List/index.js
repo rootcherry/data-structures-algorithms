@@ -75,6 +75,27 @@ class LinkedList {
         leader.next = unwantedNode.next;
         this.length--;
         return this.printList();
+    }
+
+    reverse() {
+        if (!this.head.next) {
+          return this.head;
+        }
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+    
+        while(second) {
+          const temp = second.next;
+          second.next = first;
+          first = second;
+          second = temp;
+        }
+    
+        this.head.next = null;
+        this.head = first;
+        // return this.printList();
+        return this;
       }
 
     traverseToIndex(index) {
@@ -105,10 +126,12 @@ myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
 myLinkedList.printList();
-// 1 --> 10 --> *99 --> 5 --> 16 (2, 99)
-myLinkedList.insert(2, 99);
-myLinkedList.insert(20, 88);
+// // 1 --> 10 --> *99 --> 5 --> 16 (2, 99)
+// myLinkedList.insert(2, 99);
+// myLinkedList.insert(20, 88);
+// myLinkedList.printList();
+// myLinkedList.remove(2);
+// myLinkedList.remove(2);
+myLinkedList.reverse();
 myLinkedList.printList();
-myLinkedList.remove(2);
-myLinkedList.remove(2);
-// console.log(myLinkedList);
+console.log(myLinkedList);
