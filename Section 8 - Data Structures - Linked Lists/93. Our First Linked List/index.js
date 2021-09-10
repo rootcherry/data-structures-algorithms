@@ -49,23 +49,33 @@ class LinkedList {
         return this;
     }
     // 1 --> 10 --> *99 --> 5 --> 16 (2, 99)
-    insert(index, value) {
-        // check params
-        if (index >= this.length) {
-            return this.append(value);
+    insert(index, value){
+        //Check for proper parameters;
+        if(index >= this.length) {
+          console.log('yes')
+          return this.append(value);
         }
-        const node = new Node(value);
-        const leader = this.traverseToIndex(index - 1)
+        
+        const newNode = {
+          value: value,
+          next: null
+        }
+        const leader = this.traverseToIndex(index-1);
         const holdingPointer = leader.next;
-        leader.next = node;
-        node.next = holdingPointer;
+        leader.next = newNode;
+        newNode.next = holdingPointer;
         this.length++;
-        return this.printList();    
-    }
+        return this.printList();
+      }
 
     remove(index) {
-
-    }
+        // Check Parameters      
+        const leader = this.traverseToIndex(index-1);
+        const unwantedNode = leader.next;
+        leader.next = unwantedNode.next;
+        this.length--;
+        return this.printList();
+      }
 
     traverseToIndex(index) {
         // check params
@@ -99,4 +109,6 @@ myLinkedList.printList();
 myLinkedList.insert(2, 99);
 myLinkedList.insert(20, 88);
 myLinkedList.printList();
+myLinkedList.remove(2);
+myLinkedList.remove(2);
 // console.log(myLinkedList);
